@@ -14,3 +14,9 @@ kernel
 kernelmemfs
 mkfs
 .gdbinit
+
+*.gitpatch
+
+cmake-build-debug/
+
+*.xml
