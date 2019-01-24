@@ -188,7 +188,7 @@ void            clearpteu(pde_t *pgdir, char *uva);
 
 
 // sysproc.c
-int sys_subangkar_shanto(void);
+//int sys_subangkar_shanto(void);
 // recommended to add but donno why ?
 
 
