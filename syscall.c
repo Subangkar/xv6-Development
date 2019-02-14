@@ -6,6 +6,7 @@
 #include "proc.h"
 #include "x86.h"
 #include "syscall.h"
+#include "signalcodes.h"
 
 // User code makes a system call with INT T_SYSCALL.
 // System call number in %eax.
@@ -60,7 +61,7 @@ argptr(int n, char **pp, int size)
 {
   int i;
   struct proc *curproc = myproc();
- 
+
   if(argint(n, &i) < 0)
     return -1;
   if(size < 0 || (uint)i >= curproc->sz || (uint)i+size > curproc->sz)
@@ -105,6 +106,11 @@ extern int sys_write(void);
 extern int sys_uptime(void);
 // linked with system call function
 extern int sys_subangkar_shanto(void);
+extern int sys_listen(void);
+extern int sys_connect(void);
+extern int sys_send(void);
+extern int sys_recv(void);
+extern int sys_disconnect(void);
 
 static int (*syscalls[])(void) = {
 [SYS_fork]    sys_fork,
@@ -129,6 +135,11 @@ static int (*syscalls[])(void) = {
 [SYS_mkdir]   sys_mkdir,
 [SYS_close]   sys_close,
 [SYS_subangkar_shanto] sys_subangkar_shanto,
+[SYS_listen]  sys_listen,
+[SYS_connect] sys_connect,
+[SYS_send]    sys_send,
+[SYS_recv]    sys_recv,
+[SYS_disconnect] sys_disconnect
 };
 // system call added to system call array
 
